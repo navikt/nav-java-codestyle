@@ -1,2 +1,8 @@
 language: java
 script: mvn package
+deploy:
+  provider: script
+  script: "mvn --settings .travis.settings.xml deploy"
+  skip_cleanup: true
+  on:
+    tags: true
