@@ -44,6 +44,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <build>
@@ -100,6 +102,7 @@
               </execution>
             </executions>
           </plugin>
+          <!--
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
@@ -113,6 +116,33 @@
               </execution>
             </executions>
           </plugin>
+          -->
+
+          <!--
+          This is a workaround to create an empty javadoc file.
+          Sonatype OSS requires all artifacts to have a javadoc file, but
+          this artifact doesn't contain any Java source files, so we have
+          to create a placeholder.
+          https://vzurczak.wordpress.com/2014/08/01/generate-an-empty-javadoc-jar-file/
+          -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>empty-javadoc-jar</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+                <configuration>
+                  <classifier>javadoc</classifier>
+                  <classesDirectory>${basedir}/src/main/javadoc</classesDirectory>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
