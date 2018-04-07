@@ -26,8 +26,8 @@
   </developers>
 
   <scm>
-    <developerConnection>scm:git:ssh://github.com:navikt/nav-java-codestyle.git</developerConnection>
-    <connection>scm:git:git://github.com:navikt/nav-java-codestyle.git</connection>
+    <developerConnection>scm:git:git@github.com:navikt/nav-java-codestyle.git</developerConnection>
+    <connection>scm:git:git@github.com:navikt/nav-java-codestyle.git</connection>
     <url>https://github.com/navikt/nav-java-codestyle</url>
   </scm>
 
